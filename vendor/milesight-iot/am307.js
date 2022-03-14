@@ -42,9 +42,9 @@ function decodeUplink(input) {
             decoded.humidity = bytes[i] / 2;
             i += 1;
         }
-        // PIR
+        // ACTIVITY
         else if (channel_id === 0x05 && channel_type === 0x00) {
-            decoded.pir = bytes[i] === 1 ? "trigger": "idle";
+            decoded.activity = bytes[i] === 1 ? "trigger": "idle";
             i += 1;
         }
         // LIGHT
@@ -74,7 +74,7 @@ function decodeUplink(input) {
         }
         // PM2.5
         else if (channel_id === 0x0B && channel_type === 0x7D) {
-            decoded.pm2_5 = readUInt16LE(bytes.slice(i, i + 2));
+            decoded["pm2.5"] = readUInt16LE(bytes.slice(i, i + 2));
             i += 2;
         }
         // PM10

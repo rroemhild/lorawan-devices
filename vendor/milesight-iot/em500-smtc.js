@@ -14,6 +14,9 @@ function decodeUplink(input) {
  * Payload Decoder for The Things Network
  * 
  * Copyright 2021 Milesight IoT
+
+ *         bytes: [0x01, 0x75, 0x5C, 0x03, 0x67, 0x34, 0x01, 0x04, 0x68, 0x65, 0x05, 0x7F, 0xF0, 0x00]
+
  * 
  * @product EM500-SMTC
  */
@@ -41,11 +44,11 @@ function Decoder(bytes, port) {
         // HUMIDITY
         else if (channel_id === 0x04 && channel_type === 0x68) {
             decoded.humidity = bytes[i] / 2;
-            i += 2;
+            i += 1;
         }
         else if (channel_id === 0x04 && channel_type === 0xCA) {
             decoded.humidity = bytes[i] / 2;
-            i += 2;
+            i += 1;
         }
         // CONDUCTIVITY
         else if (channel_id === 0x05 && channel_type === 0x7F) {
